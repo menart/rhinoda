@@ -51,4 +51,16 @@ trait HistoryEntity
         return $this;
     }
 
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updateHistory()
+    {
+        if(is_null($this->createdAt)){
+            $this->setCreatedAt();
+        }
+
+        if(is_null($this->updatedAt)){
+            $this->setUpdatedAt();
+        }
+    }
 }
