@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'kinopoisk')]
@@ -16,6 +15,8 @@ class Kinopoisk
     #[ORM\OneToOne(targetEntity: Movie::class)]
     #[ORM\JoinColumn(name: 'movie_id', referencedColumnName: 'id')]
     private Movie $movie;
+
+    use HistoryEntity;
 
     /**
      * @return int
